@@ -36,5 +36,7 @@ Use the `scripts` to declare, deploy, enable, and test the module.
 
 
 ---
+
 ¹ The Go compile flags are for the minimal Docker image where the binary will be run. Without them, I get the error `exec user process caused "no such file or directory"`
+
 ² `--no-cache` to ensure Docker doesn't use a cached Go binary
