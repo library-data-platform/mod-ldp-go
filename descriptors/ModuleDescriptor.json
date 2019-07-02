@@ -1,0 +1,15 @@
+{
+  "id" : "mod-ldp-1.0",
+  "name" : "Hello World",
+  "provides" : [ {
+    "id" : "hello",
+    "version" : "1.1",
+      "handlers" : [ {
+      "methods" : [ "GET", "POST" ],
+      "pathPattern" : "/hello2"
+    } ]
+  } ],
+  "launchDescriptor" : {
+    "dockerImage" : "mod-ldp"
+  }
+}
