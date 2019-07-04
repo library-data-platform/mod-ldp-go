@@ -1,20 +1,17 @@
 package main
 
 import (
-	"fmt"
-	"io"
-	"log"
-	"net/http"
+	"github.com/folio-org/mod-ldp/app"
+	"github.com/folio-org/mod-ldp/app/config"
 )
 
+// Using this project as a template
+// http://www.golangprograms.com/advance-programs/golang-restful-api-using-grom-and-gorilla-mux.html
+
 func main() {
-	// Hello world, the web server
+	config := config.GetConfig()
 
-	fmt.Println("Running server!")
-	helloHandler := func(w http.ResponseWriter, req *http.Request) {
-		io.WriteString(w, "Hello, world!\n")
-	}
-
-	http.HandleFunc("/hello2", helloHandler)
-	log.Fatal(http.ListenAndServe(":8001", nil))
+	app := &app.App{}
+	app.Initialize(config)
+	app.Run(":8001")
 }
