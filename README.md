@@ -1,10 +1,33 @@
 # mod-ldp
 
+## Run stand-alone
+
+Install:
+```
+go get github.com/folio-org/mod-ldp
+```
+
+Run:
+```
+export LDP_PW="ENTER_PASSWORD_HERE"
+go build
+./mod-ldp
+```
+
+Check http://localhost:8001/ldp/db/status to check database connection.
+
+### Run with Okapi in VM
+
 Current dev environment is to build the Docker image from inside the vagrant VM (folio/testing). 
 
-Install Go and mod-ldp:
+First, ssh into the VM:
 ```
 vagrant ssh
+```
+
+Install Go:
+
+```
 wget https://dl.google.com/go/go1.12.6.linux-amd64.tar.gz
 sudo tar -xvf go1.12.6.linux-amd64.tar.gz
 sudo mv go /usr/local
@@ -12,6 +35,10 @@ export GOROOT=/usr/local/go
 export GOPATH=/vagrant/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 cd $GOPATH
+```
+
+Install mod-ldp:
+```
 go get github.com/folio-org/mod-ldp
 ```
 

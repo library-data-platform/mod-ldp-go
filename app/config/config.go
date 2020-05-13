@@ -1,25 +1,29 @@
 package config
 
+import "os"
+
 type Config struct {
 	DB *DBConfig
 }
 
 type DBConfig struct {
-	// Dialect  string
+	Dialect  string
 	Username string
-	// Password string
-	// Name     string
-	// Charset  string
+	Password string
+	Host     string
+	Name     string
+	Port     string
 }
 
 func GetConfig() *Config {
 	return &Config{
 		DB: &DBConfig{
-			// Dialect:  "mysql",
-			Username: "root",
-			// Password: "root",
-			// Name:     "employee",
-			// Charset:  "utf8",
+			Dialect:  "postgres",
+			Username: "ldp",
+			Password: os.Getenv("LDP_PW"),
+			Host:     "glintcore.net",
+			Name:     "ldp_folio_release",
+			Port:     "5432",
 		},
 	}
 }
