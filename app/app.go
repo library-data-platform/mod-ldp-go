@@ -48,6 +48,8 @@ func (a *App) Initialize(config *config.Config) {
 	db, err := gorm.Open(config.DB.Dialect, dbURI)
 	if err != nil {
 		log.Fatal("Could not connect database")
+	} else {
+		log.Println("Connected to db")
 	}
 	SetupCloseHandler(db)
 
@@ -70,6 +72,7 @@ func (a *App) Initialize(config *config.Config) {
 func (a *App) setRouters() {
 	a.Get("/ldp/rt/journal_access_per_time", a.GetJournalAccessPerTime)
 	a.Get("/ldp/db/status", a.GetDbStatus)
+	a.Get("/ldp/db/log", a.GetLogTable)
 }
 
 // Wrap the router for GET method
@@ -99,6 +102,9 @@ func (a *App) GetJournalAccessPerTime(w http.ResponseWriter, r *http.Request) {
 
 func (a *App) GetDbStatus(w http.ResponseWriter, r *http.Request) {
 	handlers.GetDbStatus(a.DB, w, r)
+}
+func (a *App) GetLogTable(w http.ResponseWriter, r *http.Request) {
+	handlers.GetLogTable(a.DB, w, r)
 }
 
 // Run the app on its router

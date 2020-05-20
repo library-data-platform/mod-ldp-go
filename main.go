@@ -1,6 +1,8 @@
 package main
 
 import (
+	"log"
+
 	"github.com/folio-org/mod-ldp/app"
 	"github.com/folio-org/mod-ldp/app/config"
 )
@@ -13,5 +15,7 @@ func main() {
 
 	app := &app.App{}
 	app.Initialize(config)
+	log.Println("Listening on port 8001")
 	app.Run(":8001")
+
 }
